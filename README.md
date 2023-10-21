@@ -1,6 +1,6 @@
 # Error in Geometric Brownian Motion problem?
 
-There may be an error in the implmentation of GeometricBrownianMotionProblem in DiffEqFinancial.jl
+There may be an error in the implmentation of GeometricBrownianMotionProblem in [DiffEqFinancial.jl](https://github.com/SciML/DiffEqFinancial.jl)
 
 
 Tested With julia 1.9.3 and DiffEqFinancial v2.5.0.
