@@ -1,5 +1,5 @@
 
-/#=
+#=
 @doc doc"""
 
 ``dx = μ x dt + σ x dW_t``
