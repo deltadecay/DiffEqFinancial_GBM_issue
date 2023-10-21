@@ -2,21 +2,7 @@ using DifferentialEquations
 using DiffEqFinancial
 using Statistics
 
-
-@doc doc"""
-
-``dx = μ x dt + σ x dW_t``
-
-"""
-function MyGeometricBrownianMotionProblem(μ, σ, u0, tspan; kwargs...)
-    f = function (u, p, t)
-        μ * u
-    end
-    g = function (u, p, t)
-        σ * u
-    end
-    SDEProblem{false}(f, g, u0, tspan; kwargs...)
-end
+include("solution.jl")
 
 r = 0.03
 sigma = 0.2
@@ -31,11 +17,15 @@ prob = GeometricBrownianMotionProblem(r, sigma, S0, (t,T))
 sol = solve(prob;dt=dt)
 monte_prob = EnsembleProblem(prob)
 sol = solve(monte_prob, EM(); dt=dt,trajectories=100000)
+
+# Simulated price paths
 us=[sol[i].u for i in eachindex(sol)]
+
+# Mean of all paths at all time steps
 simulated = mean(us)
 
 tsteps = collect(0:dt:T)
-# Expected value of GBM
+# Expected value of GBM at every simulated time step 
 expected = S0 * exp.(r * tsteps)
 
 # Error
