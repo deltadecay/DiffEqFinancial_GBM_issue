@@ -28,8 +28,11 @@ tsteps = collect(0:dt:T)
 # Expected value of GBM at every simulated time step 
 expected = S0 * exp.(r * tsteps)
 
+println("Stock price at T=1.0:")
+println("Simulated = ", simulated[end])
+println("Expected = ", expected[end])
 # Error
-error = sum(abs2.(simulated .- expected))
+#error = sum(abs2.(simulated .- expected))
 
 
 
